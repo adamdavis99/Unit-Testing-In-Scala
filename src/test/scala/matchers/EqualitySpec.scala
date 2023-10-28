@@ -4,7 +4,7 @@ import com.h2.services.Currency
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class EqualitySpec extends AnyFlatSpec with Matchers{
+class EqualitySpec extends UnitSpec {
   behavior of "Currency equals"
   it should "match 2 $10 currencies as equal when using should equal matchers"in {
     val curr1 : Currency = "10 USD"
