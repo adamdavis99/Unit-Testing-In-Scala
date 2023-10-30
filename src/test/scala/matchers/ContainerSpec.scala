@@ -60,8 +60,35 @@ class ContainerSpec extends UnitSpec {
     wallet should contain noneOf (tenCad, hundredINR)
     wallet should contain noElementsOf (List(tenCad, hundredINR))
   }
+  it should "not contain a currency not added to a list wallet" in {
+    val oneUsd : Currency = "1 USD"
+    val twoEuros : Currency = "2 EUR"
+    val tenCad : Currency = "10 CAD"
 
+    val wallet = List(oneUsd, twoEuros)
+    wallet should not contain (tenCad)
+  }
 
+  it should "not contain a currency not added to a Set wallet" in {
+    val oneUsd : Currency = "1 USD"
+    val twoEuros : Currency = "2 EUR"
+    val tenCad : Currency = "10 CAD"
+
+    val wallet = Set(oneUsd, twoEuros)
+    wallet should not contain (tenCad)
+  }
+  it should "not contain a currency not added to a Map wallet" in {
+    val oneUsd : Currency = "1 USD"
+    val twoEuros : Currency = "2 EUR"
+    val tenCad : Currency = "10 CAD"
+
+    val wallet : Map[String, Currency] = Map(
+      "USD" -> oneUsd,
+      "EUR" -> twoEuros
+    )
+
+    wallet should not contain ("CAD" -> tenCad)
+  }
 
 
 
